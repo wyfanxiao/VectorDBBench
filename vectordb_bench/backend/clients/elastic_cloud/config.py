@@ -30,6 +30,9 @@ class ElasticCloudIndexConfig(BaseModel, DBCaseConfig):
     M: int | None = None
     num_candidates: int | None = None
 
+    number_of_shards: int | None = 1
+    number_of_replicas: int | None = 1
+
     def parse_metric(self) -> str:
         if self.metric_type == MetricType.L2:
             return "l2_norm"

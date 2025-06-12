@@ -59,6 +59,12 @@ class ElasticCloud(VectorDB):
         del self.client
 
     def _create_indice(self, client: any) -> None:
+
+        settings = {
+                "number_of_shards": self.case_config.number_of_shards,
+                "number_of_replicas": self.case_config.number_of_replicas
+        }
+
         mappings = {
             "_source": {"excludes": [self.vector_col_name]},
             "properties": {
@@ -71,7 +77,7 @@ class ElasticCloud(VectorDB):
         }
 
         try:
-            client.indices.create(index=self.indice, mappings=mappings)
+            client.indices.create(index=self.indice, mappings=mappings, settings=settings)
         except Exception as e:
             log.warning(f"Failed to create indice: {self.indice} error: {e!s}")
             raise e from None

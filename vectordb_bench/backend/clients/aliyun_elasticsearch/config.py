@@ -3,7 +3,7 @@ from pydantic import BaseModel, SecretStr
 from ..api import DBConfig
 
 
-class AliyunElasticsearchConfig(DBConfig, BaseModel):
+class ElasticsearchConfig(DBConfig, BaseModel):
     #: Protocol in use to connect to the node
     scheme: str = "http"
     host: str = ""

@@ -11,6 +11,7 @@ from ..backend.clients.test.cli import Test
 from ..backend.clients.weaviate_cloud.cli import Weaviate
 from ..backend.clients.zilliz_cloud.cli import ZillizAutoIndex
 from ..backend.clients.oceanbase.cli import OceanBaseHNSW, OceanBaseIVF
+from ..backend.clients.aliyun_elasticsearch.cli import ElasticSearch
 from .cli import cli
 
 cli.add_command(PgVectorHNSW)
@@ -28,6 +29,7 @@ cli.add_command(PgDiskAnn)
 cli.add_command(AlloyDBScaNN)
 cli.add_command(OceanBaseHNSW)
 cli.add_command(OceanBaseIVF)
+cli.add_command(ElasticSearch)
 
 if __name__ == "__main__":
     cli()
